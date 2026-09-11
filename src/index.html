@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Five Inventory-2 (BFI-2) - Versione Italiana</title>
+    <style>
+        :root {
+            --primary: #2b5876;
+            --primary-dark: #4e4376;
+            --bg: #f4f7f6;
+            --card-bg: #ffffff;
+            --text: #333333;
+            --text-muted: #666666;
+            --border: #e0e0e0;
+            --accent: #007bff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--bg);
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        p.intro {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .instructions {
+            background: #eef2f5;
+            padding: 15px 20px;
+            border-left: 4px solid var(--primary);
+            border-radius: 4px;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
+
+        .scale-legend {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--primary-dark);
+        }
+
+        .item-card {
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: #fff;
+            transition: background 0.2s;
+        }
+
+        .item-card:hover {
+            background: #fafafa;
+        }
+
+        .item-text {
+            font-weight: 500;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .options-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .option-btn {
+            flex: 1;
+            text-align: center;
+        }
+
+        .option-btn input {
+            display: none;
+        }
+
+        .option-btn label {
+            display: block;
+            padding: 8px 4px;
+            background: #f0f0f0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+            user-select: none;
+            border: 1px solid transparent;
+        }
+
+        .option-btn input:checked+label {
+            background: var(--primary);
+            color: white;
+            font-weight: bold;
+            border-color: var(--primary-dark);
+        }
+
+        .option-btn label:hover {
+            background: #e2e2e2;
+        }
+
+        .progress-bar-container {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 10px 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: right;
+            margin-top: 4px;
+        }
+
+        .actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #results {
+            display: none;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border);
+        }
+
+        .domain-result {
+            margin-bottom: 20px;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .domain-title {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .score-bar-bg {
+            height: 12px;
+            background: #e9ecef;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .score-bar-fill {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.8s ease;
+        }
+
+        .facets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+        }
+
+        .facet-item {
+            background: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 600px) {
+            .options-group {
+                flex-direction: column;
+            }
+
+            .option-btn label {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Big Five Inventory-2 (BFI-2)</h1>
+            <p class="intro">Adattamento e Validazione Italiana (Soto & John / Burro et al., 2025)</p>
+        </header>
+
+        <div class="instructions">
+            <p><strong>Istruzioni:</strong> Qui di seguito trova un elenco di caratteristiche che possono riguardarla o
+                meno. Per ciascuna affermazione, indichi quanto è d'accordo o in disaccordo indicando il numero
+                corrispondente:</p>
+            <div class="scale-legend">
+                <span>1 = Fortemente in disaccordo</span>
+                <span>2 = Un po' in disaccordo</span>
+                <span>3 = Neutrale</span>
+                <span>4 = Un po' d'accordo</span>
+                <span>5 = Fortemente d'accordo</span>
+            </div>
+        </div>
+
+        <div class="progress-bar-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">0 di 60 completati</div>
+        </div>
+
+        <form id="bfiForm">
+            <div id="itemsContainer"></div>
+
+            <div class="actions">
+                <button type="button" class="btn-submit" onclick="calculateResults()">Calcola Risultati</button>
+            </div>
+        </form>
+
+        <div id="results">
+            <h2>I Tuoi Risultati</h2>
+            <p style="margin-bottom:20px; color: var(--text-muted); font-size:0.9rem;">I punteggi medi variano da 1
+                (molto basso) a 5 (molto alto).</p>
+            <div id="resultsContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        const items = [
+            { id: 1, text: "È estroversa, entusiasta.", trait: "E", facet: "Sociability", reverse: false },
+            { id: 2, text: "Tende a trovare difetti negli altri.", trait: "A", facet: "Compassion", reverse: true },
+            { id: 3, text: "È una persona affidabile, su cui si può sempre contare.", trait: "C", facet: "Organization", reverse: false },
+            { id: 4, text: "Si preoccupa molto.", trait: "N", facet: "Anxiety", reverse: false },
+            { id: 5, text: "È affascinata dall'arte, dalla musica o dalla letteratura.", trait: "O", facet: "Aesthetic", reverse: false },
+            { id: 6, text: "Tende a prendere il comando nelle situazioni di gruppo.", trait: "E", facet: "Assertiveness", reverse: false },
+            { id: 7, text: "È una persona perdonante, non porta rancore.", trait: "A", facet: "Respectfulness", reverse: false },
+            { id: 8, text: "Tende a essere pigra.", trait: "C", facet: "Productivity", reverse: true },
+            { id: 9, text: "Rimane ottimista anche di fronte alle difficoltà.", trait: "N", facet: "Depression", reverse: true },
+            { id: 10, text: "È curiosa di imparare cose nuove.", trait: "O", facet: "Intellectual", reverse: false },
+            { id: 11, text: "Tende a essere silenziosa e riservata.", trait: "E", facet: "Energy", reverse: true },
+            { id: 12, text: "È sensibile ed empatica verso i sentimenti degli altri.", trait: "A", facet: "Trust", reverse: false },
+            { id: 13, text: "È organizzata e ama l'ordine.", trait: "C", facet: "Organization", reverse: false },
+            { id: 14, text: "Si innervosisce o si agita facilmente.", trait: "N", facet: "EmotionalVolatility", reverse: false },
+            { id: 15, text: "Ha una vivida immaginazione e creatività.", trait: "O", facet: "Creative", reverse: false },
+            { id: 16, text: "È una persona piena di energia e vitalità.", trait: "E", facet: "Energy", reverse: false },
+            { id: 17, text: "Tende a essere diffidente o sospettosa delle intenzioni altrui.", trait: "A", facet: "Trust", reverse: true },
+            { id: 18, text: "È una persona efficiente, che porta a termine i compiti.", trait: "C", facet: "Productivity", reverse: false },
+            { id: 19, text: "Tende a sentirsi triste o giù di morale.", trait: "N", facet: "Depression", reverse: false },
+            { id: 20, text: "Poco interessata a idee astratte o teoriche.", trait: "O", facet: "Intellectual", reverse: true },
+            { id: 21, text: "Preferisce far decidere agli altri anziché imporsi.", trait: "E", facet: "Assertiveness", reverse: true },
+            { id: 22, text: "Tratta gli altri con rispetto e cortesia.", trait: "A", facet: "Respectfulness", reverse: false },
+            { id: 23, text: "Persiste finché il lavoro non è portato a termine.", trait: "C", facet: "Responsibility", reverse: false },
+            { id: 24, text: "È emotivamente stabile, difficilmente si arrabbia o si turba.", trait: "N", facet: "EmotionalVolatility", reverse: true },
+            { id: 25, text: "Ha poco interesse per le forme d'arte.", trait: "O", facet: "Aesthetic", reverse: true },
+            { id: 26, text: "È una persona socievole e aperta.", trait: "E", facet: "Sociability", reverse: false },
+            { id: 27, text: "Può essere fredda e insensibile agli altri.", trait: "A", facet: "Compassion", reverse: true },
+            { id: 28, text: "Lascia le cose in disordine.", trait: "C", facet: "Organization", reverse: true },
+            { id: 29, text: "Raramente prova ansia o preoccupazione.", trait: "N", facet: "Anxiety", reverse: true },
+            { id: 30, text: "Apre la mente a idee nuove e non convenzionali.", trait: "O", facet: "Creative", reverse: false },
+            { id: 31, text: "Preferisce lavorare da sola piuttosto che in gruppo.", trait: "E", facet: "Sociability", reverse: true },
+            { id: 32, text: "È generosa e pronta ad aiutare chi ne ha bisogno.", trait: "A", facet: "Compassion", reverse: false },
+            { id: 33, text: "Fa piani e li rispetta con disciplina.", trait: "C", facet: "Responsibility", reverse: false },
+            { id: 34, text: "Tende a sentirsi insicura di se stessa.", trait: "N", facet: "Depression", reverse: false },
+            { id: 35, text: "Apprezza l'originalità e il pensiero creativo.", trait: "O", facet: "Creative", reverse: false },
+            { id: 36, text: "È una persona carismatica ed espressiva.", trait: "E", facet: "Assertiveness", reverse: false },
+            { id: 37, text: "Tende a giudicare duramente le persone.", trait: "A", facet: "Respectfulness", reverse: true },
+            { id: 38, text: "Rimanda spesso ciò che dovrebbe fare (procrastina).", trait: "C", facet: "Productivity", reverse: true },
+            { id: 39, text: "Cambia d'umore frequentemente.", trait: "N", facet: "EmotionalVolatility", reverse: false },
+            { id: 40, text: "Possiede spiccate doti intellettuali o filosofiche.", trait: "O", facet: "Intellectual", reverse: false },
+            { id: 41, text: "È timida e riservata nelle interazioni sociali.", trait: "E", facet: "Sociability", reverse: true },
+            { id: 42, text: "Confida nella buona fede delle persone.", trait: "A", facet: "Trust", reverse: false },
+            { id: 43, text: "Svolge i propri compiti in modo accurato e scrupoloso.", trait: "C", facet: "Organization", reverse: false },
+            { id: 44, text: "Tende a mantenere la calma sotto pressione.", trait: "N", facet: "Anxiety", reverse: true },
+            { id: 45, text: "Ha pochi interessi artistici o estetici.", trait: "O", facet: "Aesthetic", reverse: true },
+            { id: 46, text: "Mostra entusiasmo e contagioso buon umore.", trait: "E", facet: "Energy", reverse: false },
+            { id: 47, text: "Tende ad essere critica o polemica con gli altri.", trait: "A", facet: "Respectfulness", reverse: true },
+            { id: 48, text: "È una persona sbadata o disattenta.", trait: "C", facet: "Responsibility", reverse: true },
+            { id: 49, text: "Spesso si sente abbattuta o demoralizzata.", trait: "N", facet: "Depression", reverse: false },
+            { id: 50, text: "È poco incline alla curiosità concettuale.", trait: "O", facet: "Intellectual", reverse: true },
+            { id: 51, text: "Guida con fermezza le conversazioni o le attività.", trait: "E", facet: "Assertiveness", reverse: false },
+            { id: 52, text: "Mostra comprensione per le debolezze umane.", trait: "A", facet: "Compassion", reverse: false },
+            { id: 53, text: "È attenta e metodica nel proprio lavoro.", trait: "C", facet: "Responsibility", reverse: false },
+            { id: 54, text: "Tende a reagire in modo eccessivo agli imprevisti.", trait: "N", facet: "EmotionalVolatility", reverse: false },
+            { id: 55, text: "Ha un approccio inventivo e fuori dagli schemi.", trait: "O", facet: "Creative", reverse: false },
+            { id: 56, text: "È molto attiva e sempre in movimento.", trait: "E", facet: "Energy", reverse: false },
+            { id: 57, text: "Tende a dubitare della lealtà degli altri.", trait: "A", facet: "Trust", reverse: true },
+            { id: 58, text: "A volte agisce in modo irresponsabile o sconsiderato.", trait: "C", facet: "Responsibility", reverse: true },
+            { id: 59, text: "Gestisce lo stress senza lasciarsi travolgere.", trait: "N", facet: "Anxiety", reverse: true },
+            { id: 60, text: "Gode nel riflettere su problemi complessi.", trait: "O", facet: "Intellectual", reverse: false }
+        ];
+
+        const domainNames = {
+            "E": "Estroversione (Extraversion)",
+            "A": "Gradevolezza (Agreeableness)",
+            "C": "Coscienziosità (Conscientiousness)",
+            "N": "Emotività Negativa / Nevroticismo (Negative Emotionality)",
+            "O": "Apertura Mentale (Open-Mindedness)"
+        };
+
+        const facetNames = {
+            "Sociability": "Sociabilità",
+            "Assertiveness": "Assertività",
+            "Energy": "Energia / Vitalità",
+            "Compassion": "Compassione",
+            "Respectfulness": "Rispettosità",
+            "Trust": "Fiducia",
+            "Organization": "Organizzazione",
+            "Productivity": "Produttività",
+            "Responsibility": "Responsabilità",
+            "Anxiety": "Ansia",
+            "Depression": "Depressione / Tono dell'umore",
+            "EmotionalVolatility": "Volatilità Emotiva",
+            "Aesthetic": "Sensibilità Estetica",
+            "Intellectual": "Curiosità Intellettuale",
+            "Creative": "Creatività / Immaginazione"
+        };
+
+        function renderQuiz() {
+            const container = document.getElementById('itemsContainer');
+            items.forEach((item) => {
+                const card = document.createElement('div');
+                card.className = 'item-card';
+
+                let optionsHtml = '';
+                for (let v = 1; v <= 5; v++) {
+                    optionsHtml += `
+                <div class="option-btn">
+                    <input type="radio" id="q_${item.id}_${v}" name="q_${item.id}" value="${v}" onchange="updateProgress()">
+                    <label for="q_${item.id}_${v}">${v}</label>
+                </div>
+            `;
+                }
+
+                card.innerHTML = `
+            <div class="item-text">${item.id}. "Ci si vede come una persona che... ${item.text.toLowerCase()}"</div>
+            <div class="options-group">${optionsHtml}</div>
+        `;
+                container.appendChild(card);
+            });
+        }
+
+        function updateProgress() {
+            const formData = new FormData(document.getElementById('bfiForm'));
+            let count = 0;
+            for (let entry of formData.entries()) {
+                count++;
+            }
+            const pct = Math.round((count / items.length) * 100);
+            document.getElementById('progressFill').style.width = pct + '%';
+            document.getElementById('progressText').innerText = `${count} di ${items.length} completati`;
+        }
+
+        function calculateResults() {
+            const formData = new FormData(document.getElementById('bfiForm'));
+            const answers = {};
+
+            for (let i = 1; i <= 60; i++) {
+                const val = formData.get(`q_${i}`);
+                if (!val) {
+                    alert(`Per favore rispondi a tutte le domande. Manca la domanda numero ${i}.`);
+                    return;
+                }
+                answers[i] = parseInt(val);
+            }
+
+            // Strutture di calcolo
+            const domainScores = { "E": [], "A": [], "C": [], "N": [], "O": [] };
+            const facetScores = {};
+
+            items.forEach(item => {
+                let score = answers[item.id];
+                if (item.reverse) {
+                    score = 6 - score; // Inversione di scala per BFI (1->5, 2->4, 3->3, 4->2, 5->1)
+                }
+                domainScores[item.trait].push(score);
+
+                if (!facetScores[item.facet]) {
+                    facetScores[item.facet] = { trait: item.trait, scores: [] };
+                }
+                facetScores[item.facet].scores.push(score);
+            });
+
+            const resultsContainer = document.getElementById('resultsContainer');
+            resultsContainer.innerHTML = '';
+
+            for (const [trait, scores] of Object.entries(domainScores)) {
+                const avg = (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2);
+                const pct = ((avg - 1) / 4) * 100;
+
+                // Trova sfaccettature
+                let facetsHtml = '';
+                for (const [fKey, fData] of Object.entries(facetScores)) {
+                    if (fData.trait === trait) {
+                        const fAvg = (fData.scores.reduce((a, b) => a + b, 0) / fData.scores.length).toFixed(2);
+                        facetsHtml += `
+                    <div class="facet-item">
+                        <span>${facetNames[fKey] || fKey}</span>
+                        <strong>${fAvg}</strong>
+                    </div>
+                `;
+                    }
+                }
+
+                const domainEl = document.createElement('div');
+                domainEl.className = 'domain-result';
+                domainEl.innerHTML = `
+            <div class="domain-title">
+                <span>${domainNames[trait]}</span>
+                <span>${avg} / 5</span>
+            </div>
+            <div class="score-bar-bg">
+                <div class="score-bar-fill" style="width: ${pct}%"></div>
+            </div>
+            <div class="facets-grid">${facetsHtml}</div>
+        `;
+                resultsContainer.appendChild(domainEl);
+            }
+
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.onload = renderQuiz;
+    </script>
+</body>
+
+</html>
