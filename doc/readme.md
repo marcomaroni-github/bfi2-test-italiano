@@ -1,5 +1,5 @@
 # Obiettivo
-Creare una versione italiana del test che possa essere utilizzata online.
+Creare una versione italiana del test BFI-2 che possa essere utilizzata online.
 
 # Versione online inglese di riferimento
 https://www.personalitylab.org/tests/bfi2_self_pol.htm
