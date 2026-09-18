@@ -304,66 +304,66 @@
 
     <script>
         const items = [
-            { id: 1, text: "È estroversa, entusiasta.", trait: "E", facet: "Sociability", reverse: false },
-            { id: 2, text: "Tende a trovare difetti negli altri.", trait: "A", facet: "Compassion", reverse: true },
-            { id: 3, text: "È una persona affidabile, su cui si può sempre contare.", trait: "C", facet: "Organization", reverse: false },
-            { id: 4, text: "Si preoccupa molto.", trait: "N", facet: "Anxiety", reverse: false },
-            { id: 5, text: "È affascinata dall'arte, dalla musica o dalla letteratura.", trait: "O", facet: "Aesthetic", reverse: false },
-            { id: 6, text: "Tende a prendere il comando nelle situazioni di gruppo.", trait: "E", facet: "Assertiveness", reverse: false },
-            { id: 7, text: "È una persona perdonante, non porta rancore.", trait: "A", facet: "Respectfulness", reverse: false },
+            { id: 1, text: "È estroversa, socievole.", trait: "E", facet: "Sociability", reverse: false },
+            { id: 2, text: "È compassionevole, ha il cuore tenero.", trait: "A", facet: "Compassion", reverse: false },
+            { id: 3, text: "Tende a essere disorganizzata.", trait: "C", facet: "Organization", reverse: true },
+            { id: 4, text: "È tranquilla, gestisce bene lo stress.", trait: "N", facet: "Anxiety", reverse: true },
+            { id: 5, text: "Ha pochi interessi artistici.", trait: "O", facet: "Aesthetic", reverse: true },
+            { id: 6, text: "Ha una personalità decisa, che sa farsi ascoltare.", trait: "E", facet: "Assertiveness", reverse: false },
+            { id: 7, text: "È rispettosa, tratta gli altri con rispetto.", trait: "A", facet: "Respectfulness", reverse: false },
             { id: 8, text: "Tende a essere pigra.", trait: "C", facet: "Productivity", reverse: true },
-            { id: 9, text: "Rimane ottimista anche di fronte alle difficoltà.", trait: "N", facet: "Depression", reverse: true },
-            { id: 10, text: "È curiosa di imparare cose nuove.", trait: "O", facet: "Intellectual", reverse: false },
-            { id: 11, text: "Tende a essere silenziosa e riservata.", trait: "E", facet: "Energy", reverse: true },
-            { id: 12, text: "È sensibile ed empatica verso i sentimenti degli altri.", trait: "A", facet: "Trust", reverse: false },
-            { id: 13, text: "È organizzata e ama l'ordine.", trait: "C", facet: "Organization", reverse: false },
-            { id: 14, text: "Si innervosisce o si agita facilmente.", trait: "N", facet: "EmotionalVolatility", reverse: false },
-            { id: 15, text: "Ha una vivida immaginazione e creatività.", trait: "O", facet: "Creative", reverse: false },
-            { id: 16, text: "È una persona piena di energia e vitalità.", trait: "E", facet: "Energy", reverse: false },
-            { id: 17, text: "Tende a essere diffidente o sospettosa delle intenzioni altrui.", trait: "A", facet: "Trust", reverse: true },
-            { id: 18, text: "È una persona efficiente, che porta a termine i compiti.", trait: "C", facet: "Productivity", reverse: false },
-            { id: 19, text: "Tende a sentirsi triste o giù di morale.", trait: "N", facet: "Depression", reverse: false },
-            { id: 20, text: "Poco interessata a idee astratte o teoriche.", trait: "O", facet: "Intellectual", reverse: true },
-            { id: 21, text: "Preferisce far decidere agli altri anziché imporsi.", trait: "E", facet: "Assertiveness", reverse: true },
-            { id: 22, text: "Tratta gli altri con rispetto e cortesia.", trait: "A", facet: "Respectfulness", reverse: false },
-            { id: 23, text: "Persiste finché il lavoro non è portato a termine.", trait: "C", facet: "Responsibility", reverse: false },
-            { id: 24, text: "È emotivamente stabile, difficilmente si arrabbia o si turba.", trait: "N", facet: "EmotionalVolatility", reverse: true },
-            { id: 25, text: "Ha poco interesse per le forme d'arte.", trait: "O", facet: "Aesthetic", reverse: true },
-            { id: 26, text: "È una persona socievole e aperta.", trait: "E", facet: "Sociability", reverse: false },
-            { id: 27, text: "Può essere fredda e insensibile agli altri.", trait: "A", facet: "Compassion", reverse: true },
-            { id: 28, text: "Lascia le cose in disordine.", trait: "C", facet: "Organization", reverse: true },
-            { id: 29, text: "Raramente prova ansia o preoccupazione.", trait: "N", facet: "Anxiety", reverse: true },
-            { id: 30, text: "Apre la mente a idee nuove e non convenzionali.", trait: "O", facet: "Creative", reverse: false },
-            { id: 31, text: "Preferisce lavorare da sola piuttosto che in gruppo.", trait: "E", facet: "Sociability", reverse: true },
-            { id: 32, text: "È generosa e pronta ad aiutare chi ne ha bisogno.", trait: "A", facet: "Compassion", reverse: false },
-            { id: 33, text: "Fa piani e li rispetta con disciplina.", trait: "C", facet: "Responsibility", reverse: false },
-            { id: 34, text: "Tende a sentirsi insicura di se stessa.", trait: "N", facet: "Depression", reverse: false },
-            { id: 35, text: "Apprezza l'originalità e il pensiero creativo.", trait: "O", facet: "Creative", reverse: false },
-            { id: 36, text: "È una persona carismatica ed espressiva.", trait: "E", facet: "Assertiveness", reverse: false },
-            { id: 37, text: "Tende a giudicare duramente le persone.", trait: "A", facet: "Respectfulness", reverse: true },
-            { id: 38, text: "Rimanda spesso ciò che dovrebbe fare (procrastina).", trait: "C", facet: "Productivity", reverse: true },
-            { id: 39, text: "Cambia d'umore frequentemente.", trait: "N", facet: "EmotionalVolatility", reverse: false },
-            { id: 40, text: "Possiede spiccate doti intellettuali o filosofiche.", trait: "O", facet: "Intellectual", reverse: false },
-            { id: 41, text: "È timida e riservata nelle interazioni sociali.", trait: "E", facet: "Sociability", reverse: true },
-            { id: 42, text: "Confida nella buona fede delle persone.", trait: "A", facet: "Trust", reverse: false },
-            { id: 43, text: "Svolge i propri compiti in modo accurato e scrupoloso.", trait: "C", facet: "Organization", reverse: false },
-            { id: 44, text: "Tende a mantenere la calma sotto pressione.", trait: "N", facet: "Anxiety", reverse: true },
-            { id: 45, text: "Ha pochi interessi artistici o estetici.", trait: "O", facet: "Aesthetic", reverse: true },
-            { id: 46, text: "Mostra entusiasmo e contagioso buon umore.", trait: "E", facet: "Energy", reverse: false },
-            { id: 47, text: "Tende ad essere critica o polemica con gli altri.", trait: "A", facet: "Respectfulness", reverse: true },
-            { id: 48, text: "È una persona sbadata o disattenta.", trait: "C", facet: "Responsibility", reverse: true },
-            { id: 49, text: "Spesso si sente abbattuta o demoralizzata.", trait: "N", facet: "Depression", reverse: false },
-            { id: 50, text: "È poco incline alla curiosità concettuale.", trait: "O", facet: "Intellectual", reverse: true },
-            { id: 51, text: "Guida con fermezza le conversazioni o le attività.", trait: "E", facet: "Assertiveness", reverse: false },
-            { id: 52, text: "Mostra comprensione per le debolezze umane.", trait: "A", facet: "Compassion", reverse: false },
-            { id: 53, text: "È attenta e metodica nel proprio lavoro.", trait: "C", facet: "Responsibility", reverse: false },
-            { id: 54, text: "Tende a reagire in modo eccessivo agli imprevisti.", trait: "N", facet: "EmotionalVolatility", reverse: false },
-            { id: 55, text: "Ha un approccio inventivo e fuori dagli schemi.", trait: "O", facet: "Creative", reverse: false },
-            { id: 56, text: "È molto attiva e sempre in movimento.", trait: "E", facet: "Energy", reverse: false },
-            { id: 57, text: "Tende a dubitare della lealtà degli altri.", trait: "A", facet: "Trust", reverse: true },
-            { id: 58, text: "A volte agisce in modo irresponsabile o sconsiderato.", trait: "C", facet: "Responsibility", reverse: true },
-            { id: 59, text: "Gestisce lo stress senza lasciarsi travolgere.", trait: "N", facet: "Anxiety", reverse: true },
-            { id: 60, text: "Gode nel riflettere su problemi complessi.", trait: "O", facet: "Intellectual", reverse: false }
+            { id: 9, text: "Rimane ottimista di fronte agli ostacoli.", trait: "N", facet: "Depression", reverse: true },
+            { id: 10, text: "È incuriosita da molte cose diverse.", trait: "O", facet: "Intellectual", reverse: false },
+            { id: 11, text: "Raramente si sente elettrizzata o appassionata.", trait: "E", facet: "Energy", reverse: true },
+            { id: 12, text: "Tende a trovare difetti negli altri.", trait: "A", facet: "Trust", reverse: true },
+            { id: 13, text: "È regolare, costante.", trait: "C", facet: "Responsibility", reverse: false },
+            { id: 14, text: "È lunatica, ha sbalzi d'umore.", trait: "N", facet: "EmotionalVolatility", reverse: false },
+            { id: 15, text: "È inventiva, trova modi ingegnosi per fare le cose.", trait: "O", facet: "Creative", reverse: false },
+            { id: 16, text: "È tendenzialmente silenziosa.", trait: "E", facet: "Sociability", reverse: true },
+            { id: 17, text: "Prova poca empatia per gli altri.", trait: "A", facet: "Compassion", reverse: true },
+            { id: 18, text: "È sistematica, ama tenere le cose in ordine.", trait: "C", facet: "Organization", reverse: false },
+            { id: 19, text: "Può essere nervosa.", trait: "N", facet: "Anxiety", reverse: false },
+            { id: 20, text: "È affascinata dall'arte, dalla musica, o dalla letteratura.", trait: "O", facet: "Aesthetic", reverse: false },
+            { id: 21, text: "È dominante, agisce da leader.", trait: "E", facet: "Assertiveness", reverse: false },
+            { id: 22, text: "Provoca litigi con gli altri, attacca brighe.", trait: "A", facet: "Respectfulness", reverse: true },
+            { id: 23, text: "Fa fatica a iniziare un lavoro.", trait: "C", facet: "Productivity", reverse: true },
+            { id: 24, text: "Si sente sicura, a proprio agio con se stessa.", trait: "N", facet: "Depression", reverse: true },
+            { id: 25, text: "Evita discussioni intellettuali, filosofiche.", trait: "O", facet: "Intellectual", reverse: true },
+            { id: 26, text: "È meno attiva di altre persone.", trait: "E", facet: "Energy", reverse: true },
+            { id: 27, text: "È, di natura, incline a perdonare.", trait: "A", facet: "Trust", reverse: false },
+            { id: 28, text: "Può essere un po' sbadata.", trait: "C", facet: "Responsibility", reverse: true },
+            { id: 29, text: "È emotivamente stabile, non si turba facilmente.", trait: "N", facet: "EmotionalVolatility", reverse: true },
+            { id: 30, text: "Ha poca creatività.", trait: "O", facet: "Creative", reverse: true },
+            { id: 31, text: "Qualche volta è timida, introversa.", trait: "E", facet: "Sociability", reverse: true },
+            { id: 32, text: "È di aiuto e generosa con gli altri.", trait: "A", facet: "Compassion", reverse: false },
+            { id: 33, text: "Tiene le cose con cura.", trait: "C", facet: "Organization", reverse: false },
+            { id: 34, text: "Si preoccupa molto.", trait: "N", facet: "Anxiety", reverse: false },
+            { id: 35, text: "Apprezza l'arte e la bellezza.", trait: "O", facet: "Aesthetic", reverse: false },
+            { id: 36, text: "Trova difficile influenzare le persone.", trait: "E", facet: "Assertiveness", reverse: true },
+            { id: 37, text: "Qualche volta è scortese con gli altri.", trait: "A", facet: "Respectfulness", reverse: true },
+            { id: 38, text: "È efficiente, ottiene risultati.", trait: "C", facet: "Productivity", reverse: false },
+            { id: 39, text: "Si sente spesso triste.", trait: "N", facet: "Depression", reverse: false },
+            { id: 40, text: "È complessa, riflette molto.", trait: "O", facet: "Intellectual", reverse: false },
+            { id: 41, text: "È piena di energie.", trait: "E", facet: "Energy", reverse: false },
+            { id: 42, text: "È sospettosa delle intenzioni altrui.", trait: "A", facet: "Trust", reverse: true },
+            { id: 43, text: "È affidabile, una persona su cui si può sempre contare.", trait: "C", facet: "Responsibility", reverse: false },
+            { id: 44, text: "Tiene sotto controllo le proprie emozioni.", trait: "N", facet: "EmotionalVolatility", reverse: true },
+            { id: 45, text: "Ha difficoltà a immaginare le cose.", trait: "O", facet: "Creative", reverse: true },
+            { id: 46, text: "Parla molto.", trait: "E", facet: "Sociability", reverse: false },
+            { id: 47, text: "Può essere fredda e insensibile.", trait: "A", facet: "Compassion", reverse: true },
+            { id: 48, text: "Lascia il caos, non pulisce.", trait: "C", facet: "Organization", reverse: true },
+            { id: 49, text: "Raramente si sente ansiosa o spaventata.", trait: "N", facet: "Anxiety", reverse: true },
+            { id: 50, text: "Pensa che la poesia e le opere teatrali siano noiose.", trait: "O", facet: "Aesthetic", reverse: true },
+            { id: 51, text: "Preferisce che siano gli altri a prendere il comando.", trait: "E", facet: "Assertiveness", reverse: true },
+            { id: 52, text: "È educata, gentile con gli altri.", trait: "A", facet: "Respectfulness", reverse: false },
+            { id: 53, text: "È tenace, lavora fino a quando un compito è finito.", trait: "C", facet: "Productivity", reverse: false },
+            { id: 54, text: "Tende a sentirsi depressa, giù di morale.", trait: "N", facet: "Depression", reverse: false },
+            { id: 55, text: "Si interessa poco di idee astratte.", trait: "O", facet: "Intellectual", reverse: true },
+            { id: 56, text: "Mostra molto entusiasmo.", trait: "E", facet: "Energy", reverse: false },
+            { id: 57, text: "Pensa il meglio delle persone.", trait: "A", facet: "Trust", reverse: false },
+            { id: 58, text: "Talvolta si comporta in modo irresponsabile.", trait: "C", facet: "Responsibility", reverse: true },
+            { id: 59, text: "È volubile, si lascia sopraffare dalle emozioni.", trait: "N", facet: "EmotionalVolatility", reverse: false },
+            { id: 60, text: "È originale, propone nuove idee.", trait: "O", facet: "Creative", reverse: false }
         ];
 
         const domainNames = {
@@ -387,9 +387,17 @@
             "Anxiety": "Ansia",
             "Depression": "Depressione / Tono dell'umore",
             "EmotionalVolatility": "Volatilità Emotiva",
-            "Aesthetic": "Sensibilità Estetica",
             "Intellectual": "Curiosità Intellettuale",
+            "Aesthetic": "Sensibilità Estetica",
             "Creative": "Creatività / Immaginazione"
+        };
+
+        const domainFacets = {
+            "E": ["Sociability", "Assertiveness", "Energy"],
+            "A": ["Compassion", "Respectfulness", "Trust"],
+            "C": ["Organization", "Productivity", "Responsibility"],
+            "N": ["Anxiety", "Depression", "EmotionalVolatility"],
+            "O": ["Intellectual", "Aesthetic", "Creative"]
         };
 
         function renderQuiz() {
@@ -408,8 +416,9 @@
             `;
                 }
 
+                const itemTextLower = item.text.charAt(0).toLowerCase() + item.text.slice(1);
                 card.innerHTML = `
-            <div class="item-text">${item.id}. "Ci si vede come una persona che... ${item.text.toLowerCase()}"</div>
+            <div class="item-text">${item.id}. "Ci si vede come una persona che... ${itemTextLower}"</div>
             <div class="options-group">${optionsHtml}</div>
         `;
                 container.appendChild(card);
@@ -464,10 +473,11 @@
                 const avg = (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2);
                 const pct = ((avg - 1) / 4) * 100;
 
-                // Trova sfaccettature
+                // Trova sfaccettature in ordine prestabilito
                 let facetsHtml = '';
-                for (const [fKey, fData] of Object.entries(facetScores)) {
-                    if (fData.trait === trait) {
+                (domainFacets[trait] || []).forEach(fKey => {
+                    const fData = facetScores[fKey];
+                    if (fData) {
                         const fAvg = (fData.scores.reduce((a, b) => a + b, 0) / fData.scores.length).toFixed(2);
                         facetsHtml += `
                     <div class="facet-item">
@@ -476,7 +486,7 @@
                     </div>
                 `;
                     }
-                }
+                });
 
                 const domainEl = document.createElement('div');
                 domainEl.className = 'domain-result';
