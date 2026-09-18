@@ -2,11 +2,16 @@
 
 Implementazione web interattiva e pronta all'uso della versione italiana ufficiale del **Big Five Inventory-2 (BFI-2)**, questionario scientificamente validato per la valutazione dei cinque grandi fattori della personalità e delle relative 15 sfaccettature gerarchiche (facets).
 
+> 🌐 **Disponibile online**:  
+> Il test è accessibile pubblicamente e utilizzabile gratuitamente all'indirizzo:  
+> **[https://bfi2-test-italiano.marcomaroni.it/](https://bfi2-test-italiano.marcomaroni.it/)**
+
 ---
 
 ## Stato del Progetto
 
-- **Funzionante e autonomo**: applicazione web single-page (`index.html`) pura (HTML5, CSS3, Vanilla JavaScript), priva di framework o librerie esterne e senza alcuna dipendenza lato server.
+- **Online e funzionante**: distribuibile tramite configurazione per hosting statico (`statichost.yml`).
+- **Autonomo**: applicazione web single-page (`index.html`) pura (HTML5, CSS3, Vanilla JavaScript), priva di framework o librerie esterne e senza alcuna dipendenza lato server.
 - **Questionario standard a 60 item**: tutti i 60 quesiti del BFI-2 sono implementati con l'adattamento linguistico italiano ufficiale.
 - **Calcolo psicometrico standard**:
   - Calcolo del punteggio medio (scala Likert 1–5) per i **5 macro-tratti** (Big Five).
@@ -16,7 +21,7 @@ Implementazione web interattiva e pronta all'uso della versione italiana ufficia
   - Indicatore di avanzamento compilazione in tempo reale.
   - Verifica automatica di completezza: avviso contestuale se uno o più item non sono stati compilati.
   - Visualizzazione immediata dei risultati con grafici a barre percentuali e schede dettagliate delle sfaccettature.
-- **Pronto per il deploy statico**: configurazione inclusa (`statichost.yml`) per pubblicazione diretta su GitHub Pages, Statichost o qualsiasi hosting di file statici.
+  - Funzione di stampa integrata con layout ottimizzato per carta e salvataggio PDF.
 
 ---
 
